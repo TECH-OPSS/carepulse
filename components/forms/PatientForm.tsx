@@ -20,7 +20,7 @@ import SubmitButton from "../SubmitButton"
 import { UserFormValidation } from "@/lib/validation"
 import { createUntrackedSearchParams } from "next/dist/client/components/search-params"
 import { useRouter } from "next/navigation"
-import { createUser } from "@/lib/actions/patient.actions"
+import { createUser } from "@/lib/actions/patient.actions";
 
 export enum FormFieldType {
     INPUT = 'input',
@@ -58,8 +58,10 @@ const PatientForm=() => {
       
       if(user) router.push('/patients/${user.$id}/register')
       } catch (error) {
-      console.log(error)
+      console.log(error);
     }
+    
+    setIsLoading (false);
   }
 
 
@@ -96,23 +98,7 @@ const PatientForm=() => {
           placeholder="(555)123-4567"
         />
 
-      {/* <FormField
-        control={form.control}
-        name="username"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Username</FormLabel>
-            <FormControl>
-              <Input placeholder="shadcn" {...field} />
-            </FormControl>
-            <FormDescription>
-              This is your public display name.
-            </FormDescription>
-            <FormMessage />
-          </FormItem>
-        )}
-    /> */}
-
+    
       <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
     </form>
   </Form></div>
